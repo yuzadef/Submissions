@@ -2,7 +2,7 @@
 Source: https://github.com/sherlock-audit/2024-11-oku-judging/issues/589
 
 Found by
-056Security, 0x0x0xw3, 0x37, 0xNirix, 0xaxaxa, 0xeix, 0xlucky, Audinarey, Boy2000, Chinedu, Contest-Squad, ExtraCaterpillar, John44, Kenn.eth, Opeyemi, PeterSR, Ragnarok, Tri-pathi, ami, befree3x, bughuntoor, future2_22, gajiknownnothing, hals, iamandreiski, itcruiser00, joshuajee, mxteem, oualidpro, phoenixv110, rahim7x, s0x0mtee, vinica_boy, whitehair0330, xiaoming90, yuza101, zhoo, zxriptor
+056Security, 0x0x0xw3, 0x37, 0xNirix, 0xaxaxa, 0xeix, 0xlucky, Audinarey, Boy2000, Chinedu, Contest-Squad, ExtraCaterpillar, John44, Kenn.eth, Opeyemi, PeterSR, Ragnarok, Tri-pathi, ami, befree3x, bughuntoor, future2_22, gajiknownnothing, hals, iamandreiski, itcruiser00, joshuajee, mxteem, oualidpro, phoenixv110, rahim7x, s0x0mtee, vinica_boy, whitehair0330, xiaoming90, ***yuza101***, zhoo, zxriptor
 
 Summary
 The pendingOrderIds arrays can grow too large making it impossible to cancel subsequent legitimate pending orders, this will create a permanent DOS for the _cancelOrder no one will be able to cancel orders not admin nor order reciepient.
