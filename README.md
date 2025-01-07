@@ -4,10 +4,10 @@ This repository serves as a comprehensive record of security vulnerabilities ide
 
 ## Total count
 
-| Accepted | Duplicates |
+|| Unique | Duplicates |
 |---------------|---------------|---------------|
 | Web applications  | 1 | 10 |
-| Smart contracts  | 1 | 1 |
+| Smart contracts  | 0 | 1 |
 
 #### For any collaboration, reach out!!!
 **Discord**: *@yuzadef*
