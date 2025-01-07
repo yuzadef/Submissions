@@ -1,13 +1,13 @@
 # Issue M-10: cancelOrder order can be DOSed due to unbounded loop.
 Source: https://github.com/sherlock-audit/2024-11-oku-judging/issues/589
 
-Found by
+### Found by
 056Security, 0x0x0xw3, 0x37, 0xNirix, 0xaxaxa, 0xeix, 0xlucky, Audinarey, Boy2000, Chinedu, Contest-Squad, ExtraCaterpillar, John44, Kenn.eth, Opeyemi, PeterSR, Ragnarok, Tri-pathi, ami, befree3x, bughuntoor, future2_22, gajiknownnothing, hals, iamandreiski, itcruiser00, joshuajee, mxteem, oualidpro, phoenixv110, rahim7x, s0x0mtee, vinica_boy, whitehair0330, xiaoming90, ***yuza101***, zhoo, zxriptor
 
-Summary
+### Summary
 The pendingOrderIds arrays can grow too large making it impossible to cancel subsequent legitimate pending orders, this will create a permanent DOS for the _cancelOrder no one will be able to cancel orders not admin nor order reciepient.
 
-Root Cause
+### Root Cause
 The root cause of the issue lies in the _cancelOrder function that loops through the pendingOrderIds in search of the right one because this pendingOrderIds array can grow too large a DOS is bound to happen and this can be exploited by a hacker to ransomware the protocol.
 
 https://github.com/sherlock-audit/2024-11-oku/blob/main/oku-custom-order-types/contracts/automatedTrigger/OracleLess.sol#L151
@@ -33,21 +33,23 @@ https://github.com/sherlock-audit/2024-11-oku/blob/main/oku-custom-order-types/c
         return false;  
     }  
 ``` 
-Internal pre-conditions
+### Internal pre-conditions
 No response
 
-External pre-conditions
+### External pre-conditions
 No response
 
-Attack Path
+### Attack Path
 Attacker creates a malicious ERC20 token with fake transfers to ease the gas cost for this attack.
 Attacker Creates 20800 orders using a worthless token as tokenIn, demanding 1 USDC per order.
 They make it impossible for the admin to cancel the order because they deliberately revert the transfer on their malicious contract.
 After this legitimate users will not be able to cancel order.
-Impact
+
+### Impact
 The cancelOrder function won't work and it will cost around $150 dollar to do it.
 There is a financial ransomware gain where the attacker can set high tokens out and force the admin to pay more money for their worthless token, so this is incentivized.
-PoC
+
+### PoC
 Follow these steps to add foundry to the contract https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry
 
 Install open zeppelin contracts
@@ -139,8 +141,8 @@ Logs:
 ```
 From the test output, we can see that 20800 order is enough to cause a DOS on the cancelOrder function, and it will cost the attacker 394889776 is about $150 dollar.
 
-Mitigation
+### Mitigation
 Create a fuction that can use the index to cancel order.
 
-### All findings report
+### References
 https://audits.sherlock.xyz/contests/641/report
