@@ -6,7 +6,7 @@ This repository serves as a comprehensive record of security vulnerabilities ide
 
 | ??? | Unique | Duplicates |
 |---------------|---------------|---------------|
-| Web Security | 1 | 3 |
+| Web Security | 2 | 3 |
 | Smart contracts | 0 | 2 |
 
 **Discord**: *@yuzadef*
